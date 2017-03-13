@@ -7,9 +7,22 @@ import javax.swing.border.*;
  * A graphical user interface for the calculator. No calculation is being
  * done here. This class is responsible just for putting up the display on 
  * screen. It then refers to the "CalcEngine" to do all the real work.
+ *
+ * Kay so here's how we'll make the buttons.
+ * import Card class, which will have a getContent() function, returning
+ * the content (new class) of the master card. getContent().getNumber will return
+ * the number of elements in the master card. Then:
  * 
- * @author Michael Kölling and David J. Barnes
- * @version 2011.07.31
+ * if (getContent().getNumber() = [insert number here])
+ * {
+ *   [insert code for the GUI layout for this number];
+ * }
+ * 
+ * It would be nice to have a more effiecient way, probably
+ * involving an algorithm that creates shapes, but time is always an issue.
+ * 
+ * @author Jake
+ * @version 2017.13.3
  */
 public class UserInterface implements ActionListener
 {
