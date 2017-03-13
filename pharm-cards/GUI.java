@@ -20,6 +20,8 @@ import javax.swing.border.*;
  * 
  * It would be nice to have a more effiecient way, probably
  * involving an algorithm that creates shapes, but time is always an issue.
+ *
+ * Don't use BorderLayout(). Use FlowLayout().
  * 
  * @author Jake
  * @version 2017.13.3
