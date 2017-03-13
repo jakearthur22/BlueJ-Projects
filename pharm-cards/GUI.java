@@ -26,7 +26,7 @@ import javax.swing.border.*;
  *    for all elements]
  *  }
  *
- * BY THE WAY, you're using sets, so brush up on those!!
+ * BY THE WAY, you're using sets, OR MAYBE ArrayList, so brush up on those!!
  *
  * It would be nice to have a more effiecient way, probably
  * involving an algorithm that creates shapes, but time is always an issue.
