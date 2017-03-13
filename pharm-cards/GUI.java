@@ -9,15 +9,25 @@ import javax.swing.border.*;
  * screen. It then refers to the "CalcEngine" to do all the real work.
  *
  * Kay so here's how we'll make the buttons.
- * import Card class, which will have a getContent() function, returning
- * the content (new class) of the master card. getContent().getNumber will return
- * the number of elements in the master card. Then:
+ * import Card class, which will have a getNumber() function, which will return
+ * the number of elements in the card set. Then:
  * 
- * if (getContent().getNumber() = [insert number here])
+ * if (card.getNumber() = [insert number here])
  * {
  *   [insert code for the GUI layout for this number];
  * }
  * 
+ * OR DO THIS:
+ * 
+ * {
+ *   [insert algorithm that will divide the number of subcards in half, 
+ *    using if statements for the weird numbers, then put the master card
+ *    in the middle of the set. It will then use FlowLayout to addButtons
+ *    for all elements]
+ *  }
+ *
+ * BY THE WAY, you're using sets, so brush up on those!!
+ *
  * It would be nice to have a more effiecient way, probably
  * involving an algorithm that creates shapes, but time is always an issue.
  *
