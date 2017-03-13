@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=description\ itemName\ itemDamage\ itemDescription\ itemUsedDescription\ itemUsedIn
+comment0.target=ItemRoom(java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ java.lang.String,\ Room)
+comment1.params=
+comment1.target=Item\ getTheItem()
+comment1.text=\r\n\ this\ should\ only\ be\ used\ in\ construcor\ of\ other\ methods\r\n
+comment2.params=
+comment2.target=Item\ getItem()
+comment2.text=\r\n\ this\ is\ the\ one\ you\ call\ during\ the\ game.\r\n
+comment3.params=
+comment3.target=boolean\ itemTaken()
+comment4.params=
+comment4.target=java.lang.String\ getLongDescription()
+numComments=5

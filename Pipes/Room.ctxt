@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.params=description
+comment0.target=Room(java.lang.String)
+comment0.text=\r\n\ Create\ a\ room\ described\ "description".\ Initially,\ it\ has\r\n\ no\ exits.\ "description"\ is\ something\ like\ "a\ kitchen"\ or\r\n\ "an\ open\ court\ yard".\r\n\ @param\ description\ The\ room's\ description.\r\n
+comment1.params=direction\ neighbor
+comment1.target=void\ setExit(java.lang.String,\ Room)
+comment1.text=\r\n\ Define\ an\ exit\ from\ this\ room.\r\n
+comment2.params=direction
+comment2.target=Room\ getExit(java.lang.String)
+comment2.text=\r\n\ @param\ direction\ The\ direction\ in\ question.\r\n\ @return\ The\ direction\ of\ the\ exit\ to\ return.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getLongDescription()
+comment3.text=\r\n\ Return\ a\ long\ description\ of\ this\ room,\ in\ the\ form\:\r\n\ \ You\ are\ in\ the\ kitchen.\r\n\ \ Exits\:\ north\ west\r\n@return\:\ A\ description\ of\ the\ room\ including\ exits.\r\n
+comment4.params=
+comment4.target=java.lang.String\ getDescription()
+comment5.params=
+comment5.target=void\ itemUsed()
+comment6.params=
+comment6.target=boolean\ getItemUsed()
+comment7.params=item
+comment7.target=void\ addUsableItem(Item)
+comment8.params=
+comment8.target=java.lang.String\ getExitString()
+comment8.text=\r\n\ Return\ a\ string\ describing\ the\ room's\ exits\r\n\ e.g.\ "Exits\ \:\ north\ east"\r\n
+numComments=9

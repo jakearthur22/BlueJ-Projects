@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=description
+comment0.target=BlockedRoom(java.lang.String)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ BlockedRoom\r\n
+comment1.params=direction\ neighbor\ blockedUntilOpened
+comment1.target=void\ setExit(java.lang.String,\ Room,\ boolean)
+comment2.params=direction
+comment2.target=boolean\ getBlocked(java.lang.String)
+comment3.params=
+comment3.target=boolean\ isBlocked()
+numComments=4

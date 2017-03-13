@@ -1,0 +1,568 @@
+import javax.swing.*;
+import java.util.Random;
+/**
+ * Write a description of class MonsterRoom here.
+ * 
+ * @author (Jake) 
+ * @version (1.0)
+ */
+public class MonsterRoom extends Room
+{
+  private String description;
+  private Parser parser;
+  private Character player;
+  private Character monster;
+  private static final int FACE_DAMAGE = 40;
+  private static final int SLASH_DAMAGE = 50;
+  private static final int GUTPUNCH_DAMAGE = 40;
+  private int index;
+  private Random random;
+  private String memo;
+  private String guiCommand;
+  private Inventory inventory;
+
+  /**
+   * Constructor for objects of class MonsterRoom
+   */
+  public MonsterRoom(String description)
+  {
+    super(description);
+    parser = new Parser();
+    player = new Character();
+    monster = new Character();
+    index = 0;
+    random = new Random();
+    memo = "";
+    guiCommand = null;
+    inventory = new Inventory();
+  }
+  
+  //make a different monster for each room, with different names, stats, and health
+  //health will restart at the beginning of a level
+  
+  /**
+   * Write a description of class Character here.
+   * 
+   * @author (Jake) 
+   * @version (2.0)
+   */
+  private class Character
+  {
+    private String name;
+    private int maxHealth;
+    private int health;
+    private boolean dead;
+    
+    /**
+     * Constructor for objects of class Character
+     */
+    public Character(int maxHealth, int health)
+    {
+      name = null;
+      this.maxHealth = maxHealth;
+      this.health = health;
+      dead = false;
+    }
+    
+    /**
+     * Constructor for objects of class Character
+     */
+      public Character()
+     {
+       name = null;
+       maxHealth = 0;
+       health = 0;
+       dead = false;
+     }
+     
+     /**
+     * Constructor for monsters
+     */
+    public Character(int maxHealth, int health, String name)
+    {
+      this.name = name;
+      this.maxHealth = maxHealth;
+      this.health = health;
+    }
+    
+    public String getName()
+    {
+      return name;
+    }
+
+    /**
+     *  
+     */
+    public int getMaxHealth()
+    {
+      return maxHealth;
+    }
+  
+    /**
+     *  
+     */
+    public int getHealth()
+    {
+      return health;
+    }
+    
+    /**
+     * 
+     */
+    public void setGui(String command)
+    {
+      guiCommand = command;
+    }
+    
+    /**
+     *  
+     */
+    public int reduceHealth(int damage)
+    {
+      health = health - damage;
+      if(health <= 0)
+      {
+        health = 0;
+        dead = true;
+      }
+      if(health > maxHealth)
+      {
+        health = maxHealth;
+      }
+      return health;
+    }
+  }
+
+
+  /**
+   * Waits for a specified number of seconds before finishing.
+   * This provides an easy way to specify a delay which can be
+   * used when producing animations.
+   * @param  seconds  the number 
+   */
+  public void wait(int seconds)
+  {
+    try
+    {
+      Thread.sleep(seconds * 1000);
+    } 
+    catch (InterruptedException e)
+    {
+     // ignoring exception at the moment
+    }
+  }
+  
+  public void printDisplay()
+  {
+    System.out.println();
+    System.out.println("         " + monster.getName());
+    System.out.println("    Health:" + monster.getHealth() + "/" + monster.getMaxHealth());
+    System.out.println();
+    System.out.println("          vs.");
+    System.out.println();
+    System.out.println("          You");
+    System.out.println("    Health:" + player.getHealth() + "/" + player.getMaxHealth());
+  }
+  
+   public void printHelp()
+  {
+    System.out.println();
+    System.out.println("<o> Get the enemy's health down to zero to win!");
+    System.out.println();
+  }
+
+  public Character getTurn()
+  {
+    if(index == 0)
+      return player;
+    else 
+      return monster;
+  } 
+  
+  public void incrementTurn()
+  {
+    index++;
+    if(index == 2)
+      index = 0;
+  }
+  
+  public void backTurn()
+  {
+    index--;
+    if(index == -1)
+      index = 1;
+  }
+  
+  public int getIndex()
+  {
+    return index;
+  }
+  
+  public void printTop(String type)
+  {
+    if(type.equals("blank"))
+    {
+      System.out.println();
+      System.out.println("Type 'get help' for help and instructions.");
+      System.out.println();
+    }
+    if(type.equals("help"))
+      printHelp();
+    if(type.equals("win"))
+    {
+      System.out.println("You have beaten " + monster.getName() + "!");
+      wait(3);
+      //free from room
+    }
+    if(type.equals("lose"))
+    {
+      System.out.println("Sorry! You lose!");
+      wait(3);
+      //restart the whole damn game
+    }
+    if(type.equals("memo"))
+    {
+      System.out.println();
+      System.out.println(memo);
+      System.out.println();
+      System.out.println();
+      System.out.println();
+      memo = "";
+    }
+  }
+  
+//   public void play()
+//   {
+//     String top = "";
+//     boolean beginning = true;
+//     boolean over = false;
+//     boolean monsterStopped = false;
+//     while(!over)
+//     {
+//       System.out.print('\u000C');
+//       if(beginning || top.equals("blank"))
+//       {
+//         printTop("blank");
+//         beginning = false;
+//       }
+//       else
+//       {
+//         printTop(top);
+//         incrementTurn();
+//       }
+//       printDisplay();
+//       if(top.equals("win") || top.equals("lose"))
+//       {
+//         over = true;
+//       }
+//       else
+//       {
+//         top = "blank";
+//         if(getIndex() == 0 || getIndex() == 1)
+//         {
+//           Command command = parser.getCommand();
+//           if(command.getCommandWord().equals(null) || command.getSecondWord().equals(null))
+//           {
+//             top = "memo";
+//             memo = "Try typing a command.";
+//           }
+//           else
+//           {
+//             if(command.getCommandWord().equals("use"))
+//             {
+//               if(command.getSecondWord().equals(getTurn().getMoveOne().getName()))
+//               {
+//                 if(getTurn().getMoveOne().getEffect().contains("toEnemy"))
+//                 {
+//                   if(getTurn().getMoveOne().getEffect().contains("attack"))
+//                   {
+//                     top = "memo";
+//                     memo1 = "" + getTurn().getName() + " used " + getTurn().getMoveOne().getName() + ".";
+//                     monster.reduceHealth(getTurn().getMoveOne().getDamage());
+//                   }
+//                   if(getTurn().getMoveOne().getEffect().contains("stop"))
+//                   {
+//                     top = "memo";
+//                     memo1 = "" + getTurn().getName() + " used " + getTurn().getMoveOne().getName() + ".";
+//                     memo2 = "" + getTurn().getName() + " stopped " + monster.getName() + " from attacking!";
+//                     monsterStopped = true;
+//                   }
+//                 }
+//                 else if(getTurn().getMoveOne().getEffect().contains("toSelf"))
+//                 {
+//                   if(getTurn().getMoveOne().getEffect().contains("heal"))
+//                   {
+//                     top = "memo";
+//                     memo1 = "" + getTurn().getName() + " used " + getTurn().getMoveOne().getName() + ".";
+//                     memo2 = "" + getTurn().getName() + " was healed.";
+//                     getTurn().reduceHealth(getTurn().getMoveOne().getDamage());
+//                   }
+//                 }
+//               }
+//               else if(command.getActionWord().equals(getTurn().getMoveTwo().getName()))
+//               {
+//                 if(getTurn().getMoveTwo().getEffect().contains("toEnemy"))
+//                 {
+//                   if(getTurn().getMoveTwo().getEffect().contains("attack"))
+//                   {
+//                     top = "memo";
+//                     memo1 = "" + getTurn().getName() + " used " + getTurn().getMoveTwo().getName() + ".";
+//                     monster.reduceHealth(getTurn().getMoveTwo().getDamage());
+//                   }
+//                   if(getTurn().getMoveTwo().getEffect().contains("stop"))
+//                   {
+//                     top = "memo";
+//                     memo1 = "" + getTurn().getName() + " used " + getTurn().getMoveTwo().getName() + ".";
+//                     memo2 = "" + getTurn().getName() + " stopped " + monster.getName() + " from attacking!";
+//                     monsterStopped = true;
+//                   }
+//                 }
+//                 else if(getTurn().getMoveTwo().getEffect().contains("toSelf"))
+//                 {
+//                   if(getTurn().getMoveTwo().getEffect().contains("heal"))
+//                   {
+//                     top = "memo";
+//                     memo1 = "" + getTurn().getName() + " used " + getTurn().getMoveTwo().getName() + ".";
+//                     memo2 = "" + getTurn().getName() + " was healed.";
+//                     getTurn().reduceHealth(getTurn().getMoveTwo().getDamage());
+//                   }
+//                 }
+//               }
+//               else
+//               {
+//                 top = "memo";
+//                 memo1 = "That is not a valid move.";
+//                 backTurn();
+//               }
+//             }
+//             else if(command.getCommandWord().equals("get"))
+//             {
+//               if(command.getActionWord().equals("moves"))
+//               {
+//                 top = "moves";
+//               }
+//               else if(command.getActionWord().equals("help"))
+//               {
+//                 top = "help";
+//               }
+//               else
+//               {
+//                 top = "memo";
+//                 memo1 = "That is not a valid function.";
+//               }
+//               backTurn();
+//             }
+//             else
+//             {
+//               top = "memo";
+//               memo1 = "That is not a valid command.";
+//               backTurn();
+//             }
+//           }
+//           
+//         }
+//         else if(getIndex() == 2)
+//         {
+//           if(monsterStopped)
+//           {
+//             top = "memo";
+//             memo1 = "" + monster.getName() + " is unable to move!";
+//             monsterStopped = false;
+//           }
+//           else
+//           {
+//             int targetNum = random.nextInt(10);
+//             if(targetNum >= 0 && targetNum < 5)
+//             {
+//               target = player;
+//             }
+//             else
+//             {
+//               target = player;
+//             }
+//             int moveNum = random.nextInt(10);
+//             if(moveNum >= 0 && moveNum < 5)
+//             {
+//               top = "memo";
+//               memo1 = "" + monster.getName() + " used " + monster.getMoveOne().getName() + ".";
+//               getTarget().reduceHealth(monster.getMoveOne().getDamage());
+//             }
+//             else
+//             {
+//               top = "memo";
+//               memo1 = "" + monster.getName() + " used " + monster.getMoveTwo().getName() + ".";
+//               getTarget().reduceHealth(monster.getMoveTwo().getDamage());
+//             }
+//           }
+//         }
+//         if(monster.getHealth() == 0)
+//         {
+//           top = "win";
+//         }
+//         else if(player.getHealth() == 0 || player.getHealth() == 0)
+//         {
+//           top = "lose";
+//         }
+//       }
+//     }
+//   }
+
+  public void play()
+  {
+    String top = "";
+    boolean beginning = true;
+    boolean over = false;
+    boolean monsterStopped = false;
+    while(!over)
+    {
+      System.out.print('\u000C');
+      if(beginning || top.equals("blank"))
+      {
+        printTop("blank");
+        beginning = false;
+      }
+      else
+      {
+        printTop(top);
+        incrementTurn();
+      }
+      printDisplay();
+      if(top.equals("win") || top.equals("lose"))
+      {
+        over = true;
+      }
+      else
+      {
+        top = "blank";
+        if(getIndex() == 0)
+        {
+          if(guiCommand.equals(null))
+          {
+            top = "memo";
+            memo = "How did you do that?";
+          }
+          else if(guiCommand.startsWith("inv"))
+          {
+            //if you are using an item
+            if(guiCommand.equals("inv1"))
+            {
+              //use it bro
+              if(guiCommand.equals("inv1"))
+              {
+                  top = "memo";
+                  memo = "You used " + /**get the item in the inventory's first spot*/ + ".";
+                  monster.reduceHealth(/**either predetermined or set*/);
+              }
+              else if(guiCommand.equals("inv2"))
+              {
+                if(getTurn().getMoveOne().getEffect().contains("heal"))
+                {
+                  top = "memo";
+                  memo = "You used " + /**get the item in the inventory's second spot*/ + ".";
+                  monster.reduceHealth(/**either predetermined or set*/);
+                }
+              }
+              else if(guiCommand.equals("inv2"))
+              {
+                if(getTurn().getMoveOne().getEffect().contains("heal"))
+                {
+                  top = "memo";
+                  memo = "You used " + /**get the item in the inventory's third spot*/ + ".";
+                  monster.reduceHealth(/**either predetermined or set*/);
+                }
+              }
+              else if(guiCommand.equals("inv2"))
+              {
+                if(getTurn().getMoveOne().getEffect().contains("heal"))
+                {
+                  top = "memo";
+                  memo = "You used " + /**get the item in the inventory's fourth spot*/ + ".";
+                  monster.reduceHealth(/**either predetermined or set*/);
+                }
+              }
+              else if(guiCommand.equals("inv2"))
+              {
+                if(getTurn().getMoveOne().getEffect().contains("heal"))
+                {
+                  top = "memo";
+                  memo = "You used " + /**get the item in the inventory's fifth spot*/ + ".";
+                  monster.reduceHealth(/**either predetermined or set*/);
+                }
+              }
+              else if(guiCommand.equals("inv2"))
+              {
+                if(getTurn().getMoveOne().getEffect().contains("heal"))
+                {
+                  top = "memo";
+                  memo = "You used " + /**get the item in the inventory's sixth spot*/ + ".";
+                  monster.reduceHealth(/**either predetermined or set*/);
+                }
+              }
+            }
+          }
+          else if(guiCommand.startsWith("hit"))
+          {
+            if(guiCommand.equals("hitface"))
+            {
+              //hit the face
+              top = "memo";
+              memo = "You hit " + monster.getName() + " in the face!";
+              monster.reduceHealth(FACE_DAMAGE);
+            }
+            else if(guiCommand.equals("hitshoulder"))
+            {
+              //hit the shoulder and paralyze
+              top = "memo";
+              memo1 = "You stopped " + monster.getName() + " from attacking!";
+              monsterStopped = true;
+            }
+            else if(guiCommand.equals("help"))
+            {
+              top = "help";
+              backTurn();
+            }
+            else
+            {
+              top = "memo";
+              memo = "I done goofed.";
+              backTurn();
+            }
+          }
+          else if(getIndex() == 1)
+          {
+            if(monsterStopped)
+            {
+              top = "memo";
+              memo1 = "" + monster.getName() + " is unable to move!";
+              monsterStopped = false;
+            }
+            else
+            {
+              int moveNum = random.nextInt(10);
+              if(moveNum >= 0 && moveNum < 5)
+              {
+                top = "memo";
+                memo1 = "" + monster.getName() + " slashed at you!";
+                player.reduceHealth(SLASH_DAMAGE);
+              }
+              else
+              {
+                top = "memo";
+                memo1 = "" + monster.getName() + " punched you in the gut!";
+                player.reduceHealth(GUTPUNCH_DAMAGE);
+              }
+            }
+          }
+          if(monster.getHealth() == 0)
+          {
+            top = "win";
+          }
+          else if(player.getHealth() == 0 || player.getHealth() == 0)
+          {
+            top = "lose";
+          }
+        }
+      }
+    }
+  }
+}

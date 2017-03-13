@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Inventory()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Inventory\r\n
+comment1.params=itemSlot
+comment1.target=Item\ getItem(int)
+comment2.params=itemSlot
+comment2.target=void\ removeItem(int)
+comment3.params=itemSlot
+comment3.target=boolean\ hasItem(int)
+comment4.params=
+comment4.target=int\ getNewestItemSlot()
+comment5.params=room
+comment5.target=java.lang.String\ pickUp(Room)
+comment6.params=itemSlot
+comment6.target=java.lang.String\ getItemName(int)
+numComments=7
