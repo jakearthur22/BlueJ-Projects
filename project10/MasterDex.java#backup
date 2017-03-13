@@ -1,0 +1,87 @@
+import java.util.ArrayList;
+import java.lang.Integer;
+
+/**
+ * Write a description of class MasterDex here.
+ * 
+ * @author (Jacob Arthur, 20140070, period 8) 
+ * @version (Wednesday, February 26, 2014)
+ */
+public class MasterDex
+{
+  ArrayList<KantoDex> entries;
+
+  /**
+   * Constructor for objects of class MasterDex
+   */
+  public MasterDex()
+  {
+    entries = new ArrayList<KantoDex>();
+    
+  }
+  
+  public ArrayList<KantoDex> getEntries()
+  {
+    return entries;  
+  }
+
+  public void addEntry(KantoDex entry)
+  {
+    if(entries.isEmpty())
+    {
+      entries.add(entry);
+    }
+    else
+    {
+      boolean notFound = true;
+      for(KantoDex entryInit : entries)
+      {
+        if(entry.getDexNumInt() == entryInit.getDexNumInt())
+        {
+          System.out.println("Error: Attempted to add an entry that already exists, or should not exist.");
+          notFound = false;
+        }
+      }
+      if(notFound)
+      {
+        entries.add(entry);
+      }
+    }
+  }
+  
+  public void printAllSummaries()
+  {
+    String sum = "";
+    for(KantoDex entry : entries)
+    {
+      sum = entry.getDexNum() + ":  " + entry.getName() + "   Types: " + entry.getType1();
+      if(!entry.getType2().equals(""))
+      {
+        sum += "/" + entry.getType2();
+      }
+      System.out.println(sum);
+    }
+  }
+  
+  public void findByDexNumber(String dexNum)
+  {
+    for(KantoDex entry : entries)
+    {
+      if(dexNum.equals(entry.getDexNum()))
+      {
+        entry.display();
+      }
+    }
+  }
+  
+  public void findByType(String type)
+  {
+    for(KantoDex entry : entries)
+    {
+      if(entry.getTypes1().contains(type))
+      {
+        
+      }
+    }
+  }
+}

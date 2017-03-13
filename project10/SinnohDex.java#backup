@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+/**
+ * Write a description of class SinnohDex here.
+ * 
+ * @author (Jacob Arthur, 20140070, period 8) 
+ * @version (Wednesday, February 26, 2014)
+ */
+public class SinnohDex extends HoennDex
+{
+  ArrayList<String> types;
+  String evolutionItem;
+
+  /**
+   * Constructor for objects of class SinnohDex
+   * @param dexNum the index number of the Pokemon
+   * @param type1 the first type of the Pokemon
+   * @param type2 the second type of the Pokemon
+   *              ("" if no second type)
+   * **the available types are Normal, Fire, Water, Fighting, and Steel**
+   * @param evolutionStage (Basic, Stage 1, or Stage 2)
+   * @param ability the Pokemon's special ability
+   * @param area the location where the Pokemon can be found
+   * @param the color of the Pokemon's shiny form
+   * @param contestValue the Pokemon's value in contests, 1-10 inclusive
+   */
+  public SinnohDex(int dexNum, String name, String type1, String type2, String evolutionStage, String ability, String area, String shinyColor, int contestValue, String evolutionItem)
+  {
+    super(dexNum, name, type1, type2, evolutionStage, ability, area, shinyColor, contestValue);
+    types = new ArrayList<String>();
+    super.addTypes();
+    this.evolutionItem = evolutionItem;
+  }
+
+  
+}

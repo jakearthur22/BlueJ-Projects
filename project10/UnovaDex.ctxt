@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=dexNum\ name\ type1\ type2\ evolutionStage\ ability\ area\ shinyColor\ musicalValue
+comment0.target=UnovaDex(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int)
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ UnovaDex\r\n\ @param\ dexNum\ the\ index\ number\ of\ the\ Pokemon\r\n\ @param\ type1\ the\ first\ type\ of\ the\ Pokemon\r\n\ @param\ type2\ the\ second\ type\ of\ the\ Pokemon\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ (""\ if\ no\ second\ type)\r\n\ **the\ available\ types\ are\ Normal,\ Fire,\ Water,\ Flying,\ Fighting,\ and\ Steel**\r\n\ @param\ evolutionStage\ (Basic,\ Stage\ 1,\ or\ Stage\ 2)\r\n\ @param\ ability\ the\ Pokemon's\ special\ ability\r\n\ @param\ area\ the\ location\ where\ the\ Pokemon\ can\ be\ found\r\n\ @param\ the\ color\ of\ the\ Pokemon's\ shiny\ form\r\n\ @param\ musicalValue\ the\ Pokemon's\ value\ in\ musicals,\ 1-10\ inclusive\r\n
+comment1.params=
+comment1.target=void\ addTypes()
+comment1.text=\r\n\ Adds\ the\ Pokemon\ types\ that\ can\ be\ used\r\n\ for\ Unova\ region\ entries.\r\n
+comment2.params=
+comment2.target=java.util.ArrayList\ getTypes1()
+comment2.text=\r\n\ @return\ types\ the\ usable\ ArrayList\ of\ all\ possible\ types\r\n\ for\ this\ region.\r\n
+comment3.params=
+comment3.target=java.lang.String\ getRegion()
+comment3.text=\r\n\ @return\ region\ the\ region\ which\ the\ Pokemon\r\n\ hails\ from.\r\n
+comment4.params=
+comment4.target=void\ display()
+comment4.text=\r\n\ Prints\ out\ all\ the\ necessary\ information\r\n\ pertaining\ to\ this\ Pokedex\ entry.\r\n
+comment5.params=
+comment5.target=java.lang.String\ toString()
+comment5.text=\r\n\ Overrides\ the\ toString\ method.\r\n\ @return\ entry\ the\ information\ pertaining\r\n\ to\ the\ Pokedex\ entry.\r\n
+numComments=6

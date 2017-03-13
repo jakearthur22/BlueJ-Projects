@@ -1,0 +1,42 @@
+import java.util.ArrayList;
+/**
+ * Write a description of class KalosDex here.
+ * 
+ * @author (Jacob Arthur, 20140070, period 8) 
+ * @version (Wednesday, February 26, 2014)
+ */
+public class KalosDex extends JohtoDex
+{
+  ArrayList<String> types;
+  boolean skyEligible;
+  boolean megaForm;
+
+  /**
+   * Constructor for objects of class KalosDex
+   * @param dexNum the index number of the Pokemon
+   * @param type1 the first type of the Pokemon
+   * @param type2 the second type of the Pokemon
+   *              ("" if no second type)
+   * **the available types are Normal, Fire, Water, Fighting, Steel, and Fairy**
+   * @param evolutionStage (Basic, Stage 1, or Stage 2)
+   * @param ability the Pokemon's special ability
+   * @param area the location where the Pokemon can be found
+   * @param the color of the Pokemon's shiny form
+   * @param skyEligible whether the Pokemon can participate in Sky Battles
+   * @param megaForm whether the Pokemon has a Mega Form
+   */
+  public KalosDex(int dexNum, String name, String type1, String type2, String evolutionStage, String ability, String area, String shinyColor, boolean skyEligible, boolean megaForm)
+  {
+    super(dexNum, name, type1, type2, evolutionStage, ability, area, shinyColor);
+    types = new ArrayList();
+    addTypes();
+    this.skyEligible = skyEligible;
+    this.megaForm = megaForm;
+  }
+
+  protected void addTypes()
+  {
+    super.addTypes();
+    types.add("Fairy");
+  }
+}

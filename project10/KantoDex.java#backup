@@ -1,0 +1,79 @@
+import java.util.ArrayList;
+/**
+ * Write a description of class KantoDex here.
+ * 
+ * @author (Jacob Arthur, 20140070, period 8) 
+ * @version (Wednesday, February 26, 2014)
+ */
+public class KantoDex
+{
+  String dexNum;
+  String name;
+  String type1;
+  String type2;
+  ArrayList<String> kantoTypes;
+  String evolutionStage;
+  String ability;
+  String area;
+
+  /**
+   * Constructor for objects of class KantoDex
+   * @param dexNum the index number of the Pokemon
+   * @param type1 the first type of the Pokemon
+   * @param type2 the second type of the Pokemon
+   *              ("" if no second type)
+   * **the available types are Normal, Fire, Water, and Fighting**
+   * @param evolutionStage (Basic, Stage 1, or Stage 2)
+   * @param ability the Pokemon's special ability
+   * @param area the location where the Pokemon can be found
+   */
+  public KantoDex(String dexNum, String name, String type1, String type2, String evolutionStage, String ability, String area)
+  {
+    kantoTypes = new ArrayList<String>();
+    addTypes();
+    this.dexNum = dexNum;
+    this.name = name;
+    this.type1 = type1;
+    this.type2 = type2;
+    this.evolutionStage = evolutionStage;
+    this.ability = ability;
+    this.area = area;
+  }
+
+  protected void addTypes()
+  {
+    kantoTypes.add("Normal");
+    kantoTypes.add("Fire");
+    kantoTypes.add("Water");
+    kantoTypes.add("Grass");
+    kantoTypes.add("Electric");
+    kantoTypes.add("Bug");
+    kantoTypes.add("Fighting");
+    kantoTypes.add("Psychic");
+    kantoTypes.add("Ghost");
+    kantoTypes.add("Ice");
+    kantoTypes.add("Ground");
+    kantoTypes.add("Dragon");
+    kantoTypes.add("Flying");
+    kantoTypes.add("Poison");
+    kantoTypes.add("Rock");
+    kantoTypes.add("");
+  }
+  
+  public ArrayList<String> getKantoTypes()
+  {
+    return kantoTypes;
+  }
+  
+  public void display()
+  {
+    System.out.println(toString());
+  }
+  
+  public String toString()
+  {
+    String entry = dexNum + ": " + name + "   Type: " + type1 + "/" + type2 + "\n" + "     " + evolutionStage + "  Ability: " + ability + "  Area Found: " + area + "\n";
+    return entry;
+  }
+  
+}

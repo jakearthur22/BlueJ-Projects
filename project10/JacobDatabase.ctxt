@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=
+comment0.target=JacobDatabase()
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ JacobDatabase\r\n
+comment1.params=
+comment1.target=java.util.ArrayList\ getEntries()
+comment1.text=\r\n\ @return\ the\ full\ list\ of\ entries\r\n
+comment2.params=entry
+comment2.target=void\ addEntry(KantoDex)
+comment2.text=\r\n\ Adds\ an\ object\ of\ KantoDex\ and\ its\ subclasses\r\n\ to\ the\ database\ of\ entries.\r\n\ Will\ not\ add\ the\ same\ entry\ more\ than\ once.\r\n
+comment3.params=
+comment3.target=void\ printAllSummaries()
+comment3.text=\r\n\ Prints\ out\ the\ Pokedex\ number,\ name,\r\n\ and\ types\ of\ every\ entry\ in\ the\r\n\ database.\r\n
+comment4.params=dexNum
+comment4.target=void\ findByDexNumber(java.lang.String)
+comment4.text=\r\n\ Finds\ an\ entry\ based\ on\ its\r\n\ Pokedex\ number\ and\ prints\ out\ all\ its\r\n\ information.\r\n\ @param\ dexNum\ the\ Pokedex\ number\r\n
+comment5.params=type
+comment5.target=void\ findByType(java.lang.String)
+comment5.text=\r\n\ Finds\ all\ of\ the\ entries\ under\ a\ \r\n\ specific\ type\ and\ prints\ out\ all\ their\ \r\n\ information.\r\n\ @param\ type\ the\ specified\ type\r\n
+comment6.params=region
+comment6.target=void\ findByRegion(java.lang.String)
+comment6.text=\r\n\ Finds\ all\ entries\ from\ a\ specific\ region\ and\r\n\ prints\ out\ all\ their\ information.\r\n\ @param\ region\ the\ specified\ region\r\n
+numComments=7
