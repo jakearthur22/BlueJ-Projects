@@ -4,3 +4,6 @@ need to create a class that will create cards on demand (when called by GUI), by
 need to create a class that will create cards on demand (when called by GUI), by pulling data from txt files in a library.
 
 http://stackoverflow.com/questions/731365/reading-and-displaying-data-from-a-txt-file
+
+
+each card will be a new txt file. each element will be separated by a character combo such as "/n"
