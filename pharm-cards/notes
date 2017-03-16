@@ -7,3 +7,5 @@ http://stackoverflow.com/questions/731365/reading-and-displaying-data-from-a-txt
 
 
 each card will be a new txt file. use the layout provided by java.awt.FlowLayout toString() method as a template!
+
+http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/layout/FlowLayoutDemoProject/src/layout/FlowLayoutDemo.java
