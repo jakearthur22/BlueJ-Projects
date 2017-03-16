@@ -41,6 +41,7 @@ public class CardGUI extends JFrame
     addElButtons();
     outputTxt = new JTextArea();
     
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
   }
   
 }
