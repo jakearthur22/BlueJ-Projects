@@ -4,32 +4,7 @@ import javax.swing.*;
 import javax.swing.border.*;
 
 /**
- * A graphical user interface for the calculator. No calculation is being
- * done here. This class is responsible just for putting up the display on 
- * screen. It then refers to the "CalcEngine" to do all the real work.
  *
- * Kay so here's how we'll make the buttons.
- * import Card class, which will have a getNumber() function, which will return
- * the number of elements in the card set. Then:
- * 
- * if (card.getNumber() = [insert number here])
- * {
- *   [insert code for the GUI layout for this number];
- * }
- * 
- * OR DO THIS:
- * 
- * {
- *   [insert algorithm that will divide the number of subcards in half, 
- *    using if statements for the weird numbers, then put the master card
- *    in the middle of the set. It will then use FlowLayout to addButtons
- *    for all elements]
- *  }
- *
- * BY THE WAY, you're using sets, OR MAYBE ArrayList, so brush up on those!!
- *
- * It would be nice to have a more effiecient way, probably
- * involving an algorithm that creates shapes, but time is always an issue.
  *
  * Don't use BorderLayout(). Use FlowLayout().
  * 
@@ -49,7 +24,7 @@ public class UserInterface implements ActionListener
    * Create a user interface.
    * @param engine The calculator engine.
    */
-  public UserInterface(CalcEngine engine)
+  public GUI(CalcEngine engine)
   {
     calc = engine;
     showingAuthor = true;
