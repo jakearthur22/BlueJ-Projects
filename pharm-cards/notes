@@ -9,3 +9,29 @@ http://stackoverflow.com/questions/731365/reading-and-displaying-data-from-a-txt
 each card will be a new txt file. use the layout provided by java.awt.FlowLayout toString() method as a template!
 
 http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/layout/FlowLayoutDemoProject/src/layout/FlowLayoutDemo.java
+
+
+modify this to add index cards:
+public void addEntry(KantoDex entry)
+  {
+    if(entries.isEmpty())
+    {
+      entries.add(entry);
+    }
+    else
+    {
+      boolean notFound = true;
+      for(KantoDex entryInit : entries)
+      {
+        if(entry.getDexNumInt() == entryInit.getDexNumInt())
+        {
+          System.out.println("Error: Attempted to add an entry that already exists, or should not exist.");
+          notFound = false;
+        }
+      }
+      if(notFound)
+      {
+        entries.add(entry);
+      }
+    }
+  }
