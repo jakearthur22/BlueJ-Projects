@@ -88,6 +88,6 @@ public class CardGUI extends JFrame
     
   }// end of initComponents()
   
-  
+  //put main(String args[]) here
   
 }//end of class
