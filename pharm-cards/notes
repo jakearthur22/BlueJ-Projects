@@ -35,3 +35,10 @@ public void addEntry(KantoDex entry)
       }
     }
   }
+  
+  OPTIONS:
+  1) add something in the ActionListener that will clear the screen if the button is pressed again
+  
+  or
+  
+  2) add a clear button.
