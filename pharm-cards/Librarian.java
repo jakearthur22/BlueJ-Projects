@@ -1,20 +1,24 @@
 import java.util.Scanner;
-
+import java.io.File;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class Librarian()
 {
+  private File file;
   private ArrayList<String> cards;
   private ArrayList<Card> library;
   private ArrayList<Element> els;
   private Scanner scan;
   private Scanner fullScan;
   
-  public Librarian(File file)
+  public Librarian(File thisFile)
   {
+    file = new File(thisFile);
     cards = new ArrayList<String>;
     library = new ArrayList<Card>;
     els = new ArrayList<Element>;
-      scan = new Scanner();
+      scan = new Scanner(file);
       String f = scan.toString();
       f = f.replaceAll("\n","");
       f = f.replaceAll(")","");
@@ -56,6 +60,28 @@ public class Librarian()
   public ArrayList<Card> getLibrary()
   {
     return library;
+  }
+  
+  public void addEntry(Card card)
+  {
+    String cString = "";
+    cString = "\n|NEW CARD||ELEMENT|(" + card.getName() + ")|ELEMENT|(" + card.getCat() + ")|ELEMENT|(" + card.getExtraText()
+      //now concat() the elements
+    els = card.getEls();
+    for(Element el : els)
+    {
+      cString.concat("\n|ELEMENT|(" + el.getName() + ")//(" + el.getText() + ")")
+    }
+    try
+    {
+    BufferedWriter out = new BufferedWriter(new FileWriter(file));
+    out.write(cString); 
+    out.close();
+    }
+    catch (IOException e)
+    {
+      System.out.println("Exception ");
+    }
   }
   
 }
