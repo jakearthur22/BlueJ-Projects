@@ -84,7 +84,7 @@ public class CardGUI extends JFrame
     
     FlowLayout layout = new FlowLayout(getContentPane());
     getContentPane.setLayout(layout);
-    //put the code for the layout here. Refer to notes.
+    //put the code for the layout here.
     layout.setAlignment(FlowLayout.CENTER);
     
   }// end of initComponents()
