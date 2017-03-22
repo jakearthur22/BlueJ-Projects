@@ -6,38 +6,50 @@ public class Librarian()
   private ArrayList<String> cards;
   private ArrayList<Card> library;
   private ArrayList<Element> els;
+  private Scanner scan;
+  private Scanner fullScan;
   
-  public Librarian()
+  public Librarian(File file)
   {
     cards = new ArrayList<String>;
     library = new ArrayList<Card>;
     els = new ArrayList<Element>;
-    File file = new File([insert location]);
-    Scanner scanner = new Scanner(file);
+      scan = new Scanner();
+      String f = scan.toString();
+      f = f.replaceAll("\n","");
+      f = f.replaceAll(")","");
+      f = f.replaceAll("(","");
+    fullScan = new Scanner(f);
     sort();
+    fullScan.close();
   }
   
   private void sort()
   {
-    scanner.useDelimiter("NEW CARD ");
-    while(scanner.hasNext())
+    fullScan.useDelimiter("|NEW CARD|");
+    while(fullScan.hasNext())
     {
-      cards.add(scanner.next());
+      cards.add(fullScan.next());
     }
     for(String card : cards)
     {
-      Scanner s = new Scanner(card);
-      s.useDelimiter("ELEMENT ");
-      while(s.hasNext())
+      Scanner cardScan = new Scanner(card);
+      cardScan.useDelimiter("|ELEMENT|");
+      String cName = cardScan.next(); 
+      String cCat = cardScan.next();
+      String cText = cardScan.next();
+      while(cardScan.hasNext())
       {
-        els.add(s.next());
+        Scanner elScan = new Scanner(cardScan.next());
+        elScan.useDelimiter("//");
+        String eName = elScan.next();
+        String eText = elScan.next();
+        els.add(new Element(eName, eText));
+        elScan.close();
       }
-      String name = els.get(0); 
-      String cat = els.get(1);
-      String text = els.get(2);
-      els.removeRange(0-3);
-      library.add(new Card(name, cat, text, els));
+      library.add(new Card(cName, cCat, cText, els));
       els.clear();
+      cardScan.close();
     }    
   }
   
