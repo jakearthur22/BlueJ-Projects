@@ -4,3 +4,12 @@ http://stackoverflow.com/questions/731365/reading-and-displaying-data-from-a-txt
 each card will be a new txt file. use the layout provided by java.awt.FlowLayout toString() method as a template!
 
 http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/layout/FlowLayoutDemoProject/src/layout/FlowLayoutDemo.java
+
+FORMAT FOR LIBRARY FILE:
+
+|NEW CARD||ELEMENT|(drug1 name)|ELEMENT|(drug1 category)|ELEMENT|(optional card1 text)
+|ELEMENT|(element#1 name)//(element#1 text)
+|ELEMENT|(element#2 name)//(element#2 text)
+|NEW CARD||ELEMENT|(drug2 name)|ELEMENT|(drug2 category)|ELEMENT|(optional card2 text)
+|ELEMENT|(element#3 name)//(element#3 text)
+|ELEMENT|(element#4 name)//(element#4 text)
