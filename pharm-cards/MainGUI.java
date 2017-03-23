@@ -51,10 +51,21 @@ public class MainGUI extends JFrame
   public void addComponentsToPane(final Container pane)
   {
     //create JPanels and set layout manager
-    
-    //create buttons
+    JPanel pickCardPanel = new JPanel(new CardLayout());
+      JPanel pickPanel1 = new JPanel();
+      JPanel pickPanel2 = new JPanel();
+      JPanel pickPanel3 = new JPanel();
+      JPanel pickPanel4 = new JPanel();
+    //create components
+    JLabel titleLabel = new JLabel("Pick a card:");
+    JLabel catLabel = new JLabel("Category: ");
     JComboBox catBox = new JComboBox(catList);
+    JLabel drugLabel = new JLabel("Drug Name: );
+    JComboBox drugBox = new JComboBox(drugList);
+    JButton selectDrugButton = new JButton("Select");
     
+    //add components to secondary panes
+    pickPanel1.add
     //create action listeners for buttons
     //add all to the main pane
   }
