@@ -5,6 +5,8 @@ each card will be a new txt file. use the layout provided by java.awt.FlowLayout
 
 http://docs.oracle.com/javase/tutorial/displayCode.html?code=http://docs.oracle.com/javase/tutorial/uiswing/examples/layout/FlowLayoutDemoProject/src/layout/FlowLayoutDemo.java
 
+https://eclipse.org/windowbuilder/
+
 FORMAT FOR LIBRARY FILE:
 
 |NEW CARD||ELEMENT|(drug1 name)|ELEMENT|(drug1 category)|ELEMENT|(optional card1 text)
