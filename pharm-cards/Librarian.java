@@ -72,6 +72,7 @@ public class Librarian()
     {
       cString.concat("\n|ELEMENT|(" + el.getName() + ")//(" + el.getText() + ")")
     }
+    els.clear();
     try
     {
     BufferedWriter out = new BufferedWriter(new FileWriter(file));
