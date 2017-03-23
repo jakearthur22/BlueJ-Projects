@@ -16,7 +16,6 @@ public class CardGUI extends JFrame
   private ArrayList<Element> els;
   private ArrayList<JButton> jbutts;
   private JTextArea outputTxt;
-  private JScrollPane pane;
   private boolean pressed;
   
   public CardGUI(Card c)
@@ -24,6 +23,7 @@ public class CardGUI extends JFrame
     card = c;
     els = card.getEls();
     jbutts = new ArrayList<JButton>;
+    outputTxt = new JTextArea();
     pressed = false;
     initComponents();
     this.setVisible(true);
@@ -41,15 +41,9 @@ public class CardGUI extends JFrame
   
   private void initComponents()
   {
-    addElButtons();
-    outputTxt = new JTextArea();
-    pane = new JScrollPane()
+    addElButtons(); //initially create the buttons
     
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    
-    outputTxt.setColumns(20);
-    outputTxt.setRows(5);
-    pane.setViewportView(outputTxt);
     
     //for loop to set the name of each element
     int i = 0;
@@ -58,7 +52,6 @@ public class CardGUI extends JFrame
       jbutts.get(i).setText(el.getName());
       i++;
     }
-    
     //for loop to set the output text for each element
     i = 0;
     for (Element el : els)
@@ -82,10 +75,7 @@ public class CardGUI extends JFrame
       i++;
     }// end of for loop to set the output text for each element
     
-    FlowLayout layout = new FlowLayout(getContentPane());
-    getContentPane.setLayout(layout);
-    //put the code for the layout here.
-    layout.setAlignment(FlowLayout.CENTER);
+    
     
   }// end of initComponents()
   
