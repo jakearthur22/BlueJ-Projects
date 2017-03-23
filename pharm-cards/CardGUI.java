@@ -106,7 +106,7 @@ public class CardGUI extends JFrame
     //set frame to close
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     //addComponentsToPane()
-    addComponentsToPane();
+    addComponentsToPane(frame.getContentPane());
     //pack
     frame.pack();
     //set visible
