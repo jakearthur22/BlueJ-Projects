@@ -94,9 +94,9 @@ public class CardGUI extends JFrame
       i++;
     }
     //add all to the main pane
-    pane.add(txtPanel, BorderLayout.NORTH);
+    pane.add(txtPanel, BorderLayout.PAGE_START);
     pane.add(mainCardPanel, BorderLayout.CENTER);
-    pane.add(elPanel, BorderLayout.SOUTH);
+    pane.add(elPanel, BorderLayout.PAGE_END);
   }
   
   private static void createAndShowGUI()
