@@ -74,16 +74,7 @@ public class Card
   */
   public void addMain()
   {
-    int mid = 0;
-    if(els.size() % 2 = 0)
-    {
-      mid = els.size() / 2
-    }
-    else
-    {
-      mid = (els.size() / 2) + 1
-    }
-    els.add(mid, mainCard);
+    els.add(mainCard, 0);
   }
   
 }
