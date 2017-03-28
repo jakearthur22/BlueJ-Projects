@@ -12,3 +12,6 @@ FORMAT FOR LIBRARY FILE:
 |NEW CARD||ELEMENT|(drug2 name)|ELEMENT|(drug2 category)|ELEMENT|(optional card2 text)
 |ELEMENT|(element#3 name)//(element#3 text)
 |ELEMENT|(element#4 name)//(element#4 text)
+
+
+Delete card pane |||  Pick Card pane |||  Add Card pane
