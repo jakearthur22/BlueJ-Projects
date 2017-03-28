@@ -34,9 +34,7 @@ public class MainGUI extends JFrame
       if(!repeated)
       {
         catList[catList.length] = card.getCategory();
-      }
-    }
-  }
+      }}}
   
   private void setDrugList(String cat)
   {
@@ -45,9 +43,7 @@ public class MainGUI extends JFrame
       if(card.getCategory().equals(cat)))
       {
         drugList[drugList.length] = card.getName();
-      }
-    }
-  }
+      }}}
   
   public void addComponentsToPane(final Container pane)
   {
@@ -68,15 +64,16 @@ public class MainGUI extends JFrame
       JPanel addPanel5 = new JPanel();
       JPanel addPanel6 = new JPanel();
       JPanel addPanel7 = new JPanel();
+      
     //create components
     JLabel titleLabel = new JLabel("Pick a card:");
     JLabel catLabel = new JLabel("Category: ");
     JComboBox catBox = new JComboBox(catList);
-    JLabel drugLabel = new JLabel("Drug Name: );
+    JLabel drugLabel = new JLabel("Drug Name: ");
     JComboBox drugBox = new JComboBox(drugList);
     JButton selectDrugButton = new JButton("Select");
     
-    JLabel addDrugNameLabel = new JLabel("Drug Name: );
+    JLabel addDrugNameLabel = new JLabel("Drug Name: ");
     JTextField addDrugNameText = new JTextField(15);
     JLabel addCatLabel = new JLabel("Category: ");
     JTextField addCatText = new JTextField(15);
@@ -94,6 +91,16 @@ public class MainGUI extends JFrame
     pickPanel2.add(catLabel); pickPanel2.add(catBox);
     pickPanel3.add(drugLabel); pickPanel3.add(drugBox);
     pickPanel4.add(selectDrugButton);
+    pickCardPanel.add(pickPanel1); pickCardPanel.add(pickPanel2); pickCardPanel.add(pickPanel3); pickCardPanel.add(pickPanel4);
+    
+    addPanel1.add(addDrugNameLabel); addPanel1.add(addDrugNameText);
+    addPanel2.add(addCatLabel); addPanel2.add(addCatText);
+    addPanel3.add(addExtraTextLabel); addPanel3.add(addExtraTextText);
+    addPanel4.add(el1NameLabel); addPanel4.add(el1NameText);
+    addPanel5.add(el1TextLabel); addPanel5.add(el1TextText);
+    addPanel6.add(addMoreElsButton);
+    addPanel7.add(addCardButton);
+    adCardPanel.add(addPanel1); addCardPanel.add(addPanel2); addCardPanel.add(addPanel3); addCardPanel.add(addPanel4); addCardPanel.add(addPanel5); addCardPanel.add(addPanel6); addCardPanel.add(addPanel7);
     
     //create action listeners for components
     catBox.addActionListener(new ActionListener()
@@ -105,9 +112,7 @@ public class MainGUI extends JFrame
         for(int i = 0; i < drugList.length; i++)
         {
           drugBox.addItem(drugList[i]);
-        }
-      }
-    });
+        }}});
     
     selectDrugButton.addActionListener(new ActionListener()
     {
@@ -121,13 +126,10 @@ public class MainGUI extends JFrame
             {
               CardGUI cardDisplay = new CardGUI(card);
               cardDisplay.setVisible(true);
-            }
-          }
-        }
-      }
-    }
+            }}}}}
     //add all to the main pane
-    pane.add(pickCardPanel, BorderLayout.LINE_START);
+    pane.add(pickCardPanel, BorderLayout.CENTER);
+    pane.add(addCardPanel, BorderLayout.LINE_END);
   }
   
   private static void createAndShowGUI()
