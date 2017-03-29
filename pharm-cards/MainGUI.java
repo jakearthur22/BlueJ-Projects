@@ -47,7 +47,7 @@ public class MainGUI extends JFrame
   
   public void addComponentsToPane(final Container pane)
   {
-    //create JPanels and set layout manager
+    //create JPanels and set layout manager//////////////////////////////////////////////////////////////////////////////////////
     JPanel pickCardPanel = new JPanel();
     pickCardPanel.setLayout(new BoxLayout(pickCardPanel, BoxLayout.Y_AXIS));
       JPanel pickPanel1 = new JPanel();
@@ -65,7 +65,7 @@ public class MainGUI extends JFrame
       JPanel addPanel6 = new JPanel();
       JPanel addPanel7 = new JPanel();
       
-    //create components
+    //create components///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     JLabel titleLabel = new JLabel("Pick a card:");
     JLabel catLabel = new JLabel("Category: ");
     JComboBox catBox = new JComboBox(catList);
@@ -86,7 +86,7 @@ public class MainGUI extends JFrame
     JButton addMoreElsButton = new JButton("Add Another Element");
     JButton addCardButton = new JButton("Done: Add Card");
     
-    //add components to secondary panes
+    //add components to secondary panes//////////////////////////////////////////////////////////////////////////////////////////
     pickPanel1.add(titleLabel);
     pickPanel2.add(catLabel); pickPanel2.add(catBox);
     pickPanel3.add(drugLabel); pickPanel3.add(drugBox);
@@ -100,9 +100,10 @@ public class MainGUI extends JFrame
     addPanel5.add(el1TextLabel); addPanel5.add(el1TextText);
     addPanel6.add(addMoreElsButton);
     addPanel7.add(addCardButton);
-    adCardPanel.add(addPanel1); addCardPanel.add(addPanel2); addCardPanel.add(addPanel3); addCardPanel.add(addPanel4); addCardPanel.add(addPanel5); addCardPanel.add(addPanel6); addCardPanel.add(addPanel7);
+    addCardPanel.add(addPanel1); addCardPanel.add(addPanel2); addCardPanel.add(addPanel3); addCardPanel.add(addPanel4); addCardPanel.add(addPanel5); addCardPanel.add(addPanel6); addCardPanel.add(addPanel7);
     
-    //create action listeners for components
+    //create action listeners for components////////////////////////////////////////////////////////////////////////////////////
+    //for the the ComboBox that holds all available Categories, IN PICKPANEL
     catBox.addActionListener(new ActionListener()
     {
       public void catBoxActionPerformed(ActionEvent evt)
@@ -113,7 +114,7 @@ public class MainGUI extends JFrame
         {
           drugBox.addItem(drugList[i]);
         }}});
-    
+    //for the button used to call the selected index card, IN PICKPANEL
     selectDrugButton.addActionListener(new ActionListener()
     {
       public void selectDrugButtonActionPerformed(ActionEvent evt)
@@ -126,8 +127,26 @@ public class MainGUI extends JFrame
             {
               CardGUI cardDisplay = new CardGUI(card);
               cardDisplay.setVisible(true);
-            }}}}}
-    //add all to the main pane
+            }}}}});
+    //for the button used to add a card to the library, IN ADDPANEL
+    addCardButton.addActionListener(new ActionListener()
+    {
+      public void addCardButtonActionPerformed(ActionEvent evt)
+      {
+        if(addDrugNameText.getText().isEmpty() ||
+           addCatText.getText().isEmpty() ||
+           addEl1NameText.getText().isEmpty() ||
+           addEl1TextText.getText().isEmpty())
+        {
+          
+        }
+        else
+        {
+          
+        }
+      }
+    });
+    //add all to the main pane//////////////////////////////////////////////////////////////////////////////////////////////////////
     pane.add(pickCardPanel, BorderLayout.CENTER);
     pane.add(addCardPanel, BorderLayout.LINE_END);
   }
