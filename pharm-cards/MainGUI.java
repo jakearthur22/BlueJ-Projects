@@ -61,9 +61,9 @@ public class MainGUI extends JFrame
       JPanel addPanel2 = new JPanel();
       JPanel addPanel3 = new JPanel();
       JPanel addPanel4 = new JPanel();
+      JPanel addElPanel = new JPanel();
+      addElPanel.setLayout(new BoxLayout(addElPanel, BoxLayout.Y_AXIS));
       JPanel addPanel5 = new JPanel();
-      JPanel addPanel6 = new JPanel();
-      JPanel addPanel7 = new JPanel();
       
     //create components///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     JLabel titleLabel = new JLabel("Pick a card:");
@@ -84,6 +84,7 @@ public class MainGUI extends JFrame
     JLabel el1TextLabel = new JLabel("Element Text: ");
     JTextField el1TextText = new JTextField(15,15);
     JButton addMoreElsButton = new JButton("Add Another Element");
+    ArrayList<Element> elAddList = new ArrayList<Element>;
     JButton addCardButton = new JButton("Done: Add Card");
     
     //add components to secondary panes//////////////////////////////////////////////////////////////////////////////////////////
@@ -96,8 +97,7 @@ public class MainGUI extends JFrame
     addPanel1.add(addDrugNameLabel); addPanel1.add(addDrugNameText);
     addPanel2.add(addCatLabel); addPanel2.add(addCatText);
     addPanel3.add(addExtraTextLabel); addPanel3.add(addExtraTextText);
-    addPanel4.add(el1NameLabel); addPanel4.add(el1NameText);
-    addPanel5.add(el1TextLabel); addPanel5.add(el1TextText);
+    addElPanel.add(el1NameLabel); addElPanel.add(el1NameText); addElPanel.add(el1TextLabel); addElPanel.add(el1TextText);
     addPanel6.add(addMoreElsButton);
     addPanel7.add(addCardButton);
     addCardPanel.add(addPanel1); addCardPanel.add(addPanel2); addCardPanel.add(addPanel3); addCardPanel.add(addPanel4); addCardPanel.add(addPanel5); addCardPanel.add(addPanel6); addCardPanel.add(addPanel7);
@@ -128,6 +128,20 @@ public class MainGUI extends JFrame
               CardGUI cardDisplay = new CardGUI(card);
               cardDisplay.setVisible(true);
             }}}}});
+    //for the button used to add more textFields and Labels for elements
+    addMoreElsButton.addActionListener(new ActionListener()
+    {
+      public void addMoreElsButtonActionPerformed(ActionEvent evt)
+      {
+        JLabel newElNameLabel = new JLabel("Element Name: ");
+        JTextField newElNameText = new JTextField(15);
+        JLabel newElTextLabel = new JLabel("Element Text: ");
+        JTextField newElTextText = new JTextField(15,15);
+        addElPanel.add(newElNameLabel); addElPanel.add(newElNameText);  //need to figure out a way to implement a naming convention!!
+        addElPanel.validate();
+        addElPanel.repaint();
+      }
+    }
     //for the button used to add a card to the library, IN ADDPANEL
     addCardButton.addActionListener(new ActionListener()
     {
@@ -138,11 +152,13 @@ public class MainGUI extends JFrame
            addEl1NameText.getText().isEmpty() ||
            addEl1TextText.getText().isEmpty())
         {
-          
+          JOptionPane.showMessageDialog(frame, "Card cannot be added until all required fields are filled.");
         }
         else
         {
-          
+          librarian.addEntry(new Card(addDrugNameText.getText(), addCatText.getText(), addExtraTextText.getText(), elAddList));
+          //dont forget to clear the fields after, and show a dialog box that the card was added.
+          //may need to restart the program in order for changes to take effect!!!!!!!
         }
       }
     });
