@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Librarian()
+public class Librarian
 {
   private File file;
   private ArrayList<String> cards;
@@ -11,12 +11,12 @@ public class Librarian()
   private Scanner scan;
   private Scanner fullScan;
   
-  public Librarian(File thisFile)
+  public Librarian(String thisFile)
   {
     file = new File(thisFile);
-    cards = new ArrayList<String>;
-    library = new ArrayList<Card>;
-    els = new ArrayList<Element>;
+    cards = new ArrayList<String>();
+    library = new ArrayList<Card>();
+    els = new ArrayList<Element>();
       scan = new Scanner(file);
       String f = scan.toString();
       f = f.replaceAll("\n","");
@@ -64,12 +64,12 @@ public class Librarian()
   public void addEntry(Card card)
   {
     String cString = "";
-    cString = "\n|NEW CARD||ELEMENT|(" + card.getName() + ")|ELEMENT|(" + card.getCat() + ")|ELEMENT|(" + card.getExtraText()
+    cString = "\n|NEW CARD||ELEMENT|(" + card.getName() + ")|ELEMENT|(" + card.getCat() + ")|ELEMENT|(" + card.getExtraText();
       //now concat() the elements
     els = card.getEls();
     for(Element el : els)
     {
-      cString.concat("\n|ELEMENT|(" + el.getName() + ")//(" + el.getText() + ")")
+      cString.concat("\n|ELEMENT|(" + el.getName() + ")//(" + el.getText() + ")");
     }
     els.clear();
     try
