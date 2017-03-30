@@ -1,9 +1,7 @@
 https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
-
 http://stackoverflow.com/questions/3191837/dynamic-jcomboboxes/3191882#3191882
 
 FORMAT FOR LIBRARY FILE:
-
 |NEW CARD||ELEMENT|(drug1 name)|ELEMENT|(drug1 category)|ELEMENT|(optional card1 text)
 |ELEMENT|(element#1 name)//(element#1 text)
 |ELEMENT|(element#2 name)//(element#2 text)
@@ -11,9 +9,7 @@ FORMAT FOR LIBRARY FILE:
 |ELEMENT|(element#3 name)//(element#3 text)
 |ELEMENT|(element#4 name)//(element#4 text)
 
-
+FORMAT FOR THE MAINFRAME:
 Delete card pane |||  Pick Card pane |||  Add Card pane
 
-https://docs.oracle.com/javase/tutorial/uiswing/examples/components/DialogDemoProject/src/components/DialogDemo.java
-
-http://stackoverflow.com/questions/12251618/java-how-to-add-more-textfields-by-clicking-a-button
+VIP: MAY HAVE TO ADD IN SOME JScrollPanes WHILE TESTING
