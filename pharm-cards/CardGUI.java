@@ -23,8 +23,8 @@ public class CardGUI extends JFrame
     card = c;
     els = card.getEls();
     setGridCoordinates();
-    jbutts = new ArrayList<JButton>;
-    outputTxt = new JTextArea(5, 10);
+    jbutts = new ArrayList<JButton>();
+    outputTxt = new JTextArea(5,10);
   }
   
   //any other methods here!
@@ -38,29 +38,30 @@ public class CardGUI extends JFrame
   
   private void setGridCoordinates()
   {
-    int n = card.getNumber()
+    int n = card.getNumber();
     if(n < 4)
     {
       gridX = 1; gridY = 3;
     }
-    elif(n < 7)
+    else if(n < 7)
     {
       gridX = 3; gridY = 2;
     }
-    elif(n < 10)
+    else if(n < 10)
     {
       gridX = 3; gridY = 3;
     }
     else
     {
-      gridX = 4; gridY = (n/4 + 1)
+      gridX = 4; gridY = (n/4 + 1);
     }
   }
   
   public void addComponentsToPane(final Container pane)
   {
     //create JPanels and set layout manager
-    JPanel txtPanel = new JPanel(new JScrollPane(outputTxt));
+    JPanel txtPanel = new JPanel();
+    txtPanel.add(new JScrollPane(outputTxt));
     JPanel mainCardPanel = new JPanel(new FlowLayout());
     JPanel elPanel = new JPanel(new GridLayout(gridX, gridY));
     
@@ -73,7 +74,7 @@ public class CardGUI extends JFrame
       elPanel.add(button);
     }
     //create action listeners for buttons
-    i = 0;
+    int i = 0;
     for (Element el : els)
     {
       jbutts.get(i).addActionListener(new ActionListener()
@@ -100,7 +101,7 @@ public class CardGUI extends JFrame
     pane.add(elPanel, BorderLayout.PAGE_END);
   }
   
-  private static void createAndShowGUI()
+  public static void createAndShowGUI()
   {
     //create frame
     JFrame frame = new JFrame(card.getName());
