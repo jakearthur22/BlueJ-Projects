@@ -7,8 +7,8 @@ public class MainGUI extends JFrame
 {
   private Librarian librarian;
   private ArrayList<Card> library;
-  String[] catList;
-  String[] drugList;
+  private String[] catList;
+  private String[] drugList;
   
   public MainGUI()
   {
@@ -16,7 +16,8 @@ public class MainGUI extends JFrame
     library = librarian.getLibrary();
     catList = new String[];
     drugList = new String[];
-    setCatList()
+    setCatList();
+    initDrugList();
   }
   
   private void setCatList()
@@ -36,6 +37,14 @@ public class MainGUI extends JFrame
         catList[catList.length] = card.getCategory();
       }}}
   
+  private void initDrugList()
+  {
+    for(Card card : library)
+    {
+      drugList[drugList.length] = card.getName();
+    }
+  }
+  
   private void setDrugList(String cat)
   {
     for(Card card : library)
@@ -48,6 +57,7 @@ public class MainGUI extends JFrame
   public void addComponentsToPane(final Container pane)
   {
     //create JPanels and set layout manager//////////////////////////////////////////////////////////////////////////////////////
+    //the panel to pick a card from the library
     JPanel pickCardPanel = new JPanel();
     pickCardPanel.setLayout(new BoxLayout(pickCardPanel, BoxLayout.Y_AXIS));
       JPanel pickPanel1 = new JPanel();
@@ -55,8 +65,10 @@ public class MainGUI extends JFrame
       JPanel pickPanel3 = new JPanel();
       JPanel pickPanel4 = new JPanel();
     
+    //the panel to add a card to the library
     JPanel addCardPanel = new JPanel();
     addCardPanel.setLayout(new BoxLayout(addCardPanel, BoxLayout.Y_AXIS));
+      JPanel addPanel0 = new JPanel();
       JPanel addPanel1 = new JPanel();
       JPanel addPanel2 = new JPanel();
       JPanel addPanel3 = new JPanel();
@@ -64,8 +76,17 @@ public class MainGUI extends JFrame
       JPanel addElPanel = new JPanel();
       addElPanel.setLayout(new BoxLayout(addElPanel, BoxLayout.Y_AXIS));
       JPanel addPanel5 = new JPanel();
-      
+      JPanel addPanel6 = new JPanel();
+    
+    //the panel to delete a card from the library
+    JPanel deleteCardPanel = new JPanel();
+    deleteCardPanel.setLayout(new BoxLayout(deleteCardPanel, BoxLayout.Y_AXIS);
+      JPanel deletePanel1 = new JPanel;
+      JPanel deletePanel2 = new JPanel;
+      JPanel deletePanel3 = new JPanel;
+      JPanel deletePanel4 = new JPanel;
     //create components///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //componenets for the panel to pick a card from the library
     JLabel titleLabel = new JLabel("Pick a card:");
     JLabel catLabel = new JLabel("Category: ");
     JComboBox catBox = new JComboBox(catList);
@@ -73,20 +94,32 @@ public class MainGUI extends JFrame
     JComboBox drugBox = new JComboBox(drugList);
     JButton selectDrugButton = new JButton("Select");
     
+    //componenets for the panel to add a card to the library
+    JLabel addTitleLabel = new JLabel("Create a new card: ");
     JLabel addDrugNameLabel = new JLabel("Drug Name: ");
     JTextField addDrugNameText = new JTextField(15);
     JLabel addCatLabel = new JLabel("Category: ");
     JTextField addCatText = new JTextField(15);
     JLabel addExtraTextLabel = new JLabel("Main card text(optional): ");
     JTextField addExtraTextText = new JTextField(15,15);
-    JLabel el1NameLabel = new JLabel("Element Name: ");
-    JTextField el1NameText = new JTextField(15);
-    JLabel el1TextLabel = new JLabel("Element Text: ");
-    JTextField el1TextText = new JTextField(15,15);
+    JLabel elNameLabel = new JLabel("Element Name: ");
+    JTextField elNameText = new JTextField(15);
+    JLabel elTextLabel = new JLabel("Element Text: ");
+    JTextField elTextText = new JTextField(15,15);
     JButton addMoreElsButton = new JButton("Add Another Element");
-    ArrayList<Element> elAddList = new ArrayList<Element>;
+      ArrayList<Element> elAddList = new ArrayList<Element>;
+      ArrayList<JTextField> elNameList = new ArrayList<JTextField>;
+      ArrayList<JTextfield> elTextList = new ArrayList<JTextField>;
     JButton addCardButton = new JButton("Done: Add Card");
     
+    //componenets for the panel to delete a card from the library
+    JLabel deleteTitleLabel = new JLabel("Delete a card: ");
+    JLabel deleteCatLabel = new JLabel("Category: ");
+    JComboBox deleteCatBox = new JComboBox(catList);
+    JLabel deleteDrugLabel = new JLabel("Drug Name: ");
+    JComboBox deleteDrugBox = new JComboBox(drugList);
+    JButton deletePreviewButton = new JButton("Preview");
+    JButton deleteCardButton = new JButton("Delete");
     //add components to secondary panes//////////////////////////////////////////////////////////////////////////////////////////
     pickPanel1.add(titleLabel);
     pickPanel2.add(catLabel); pickPanel2.add(catBox);
@@ -94,14 +127,20 @@ public class MainGUI extends JFrame
     pickPanel4.add(selectDrugButton);
     pickCardPanel.add(pickPanel1); pickCardPanel.add(pickPanel2); pickCardPanel.add(pickPanel3); pickCardPanel.add(pickPanel4);
     
+    addPanel0.add(addTitleLabel);
     addPanel1.add(addDrugNameLabel); addPanel1.add(addDrugNameText);
     addPanel2.add(addCatLabel); addPanel2.add(addCatText);
     addPanel3.add(addExtraTextLabel); addPanel3.add(addExtraTextText);
-    addElPanel.add(el1NameLabel); addElPanel.add(el1NameText); addElPanel.add(el1TextLabel); addElPanel.add(el1TextText);
-    addPanel6.add(addMoreElsButton);
-    addPanel7.add(addCardButton);
-    addCardPanel.add(addPanel1); addCardPanel.add(addPanel2); addCardPanel.add(addPanel3); addCardPanel.add(addPanel4); addCardPanel.add(addPanel5); addCardPanel.add(addPanel6); addCardPanel.add(addPanel7);
+    addElPanel.add(elNameLabel); addElPanel.add(elNameText); addElPanel.add(elTextLabel); addElPanel.add(elTextText);
+    addPanel5.add(addMoreElsButton);
+    addPanel6.add(addCardButton);
+    addCardPanel.add(AddPanel0); addCardPanel.add(addPanel1); addCardPanel.add(addPanel2); addCardPanel.add(addPanel3); addCardPanel.add(addPanel4); addCardPanel.add(addElPanel); addCardPanel.add(addPanel5); addCardPanel.add(addPanel7);
     
+    deletePanel1.add(deleteTitleLabel);
+    deletePanel2.add(deleteCatLabel); deletePanel2.add(deleteCatBox);
+    deletePanel3.add(deleteDrugLabel); deletePanel3.add(deleteDrugBox);
+    deletePanel4.add(deletePreviewButton); deletePanel4.add(deleteCardButton);
+    deleteCardPanel.add(deletePanel1); deleteCardPanel.add(deletePanel2); deleteCardPanel.add(deletePanel3); deleteCardPanel.add(deletePanel4);
     //create action listeners for components////////////////////////////////////////////////////////////////////////////////////
     //for the the ComboBox that holds all available Categories, IN PICKPANEL
     catBox.addActionListener(new ActionListener()
@@ -125,19 +164,21 @@ public class MainGUI extends JFrame
           {
             if(card.getName().equals(drugBox.getSelectedItem().toString()))
             {
+              initDrugList();
               CardGUI cardDisplay = new CardGUI(card);
               cardDisplay.setVisible(true);
             }}}}});
-    //for the button used to add more textFields and Labels for elements
+    //for the button used to add more textFields and Labels for elements, IN ADDPANEL
     addMoreElsButton.addActionListener(new ActionListener()
     {
       public void addMoreElsButtonActionPerformed(ActionEvent evt)
       {
-        JLabel newElNameLabel = new JLabel("Element Name: ");
-        JTextField newElNameText = new JTextField(15);
-        JLabel newElTextLabel = new JLabel("Element Text: ");
-        JTextField newElTextText = new JTextField(15,15);
-        addElPanel.add(newElNameLabel); addElPanel.add(newElNameText);  //need to figure out a way to implement a naming convention!!
+        addElPanel.add(new JLabel("Element Name: "));
+        elNameList.add(new JTextField(15));
+        addElPanel.add(elNameList.get(elNameList.size()-1));
+        addElPanel.add(new JLabel("Element Text: "));
+        elTextList.add(new JTextField(15,15));
+        addElPanel.add(elTextList.get(elTextList.size()-1));
         addElPanel.validate();
         addElPanel.repaint();
       }
@@ -149,20 +190,94 @@ public class MainGUI extends JFrame
       {
         if(addDrugNameText.getText().isEmpty() ||
            addCatText.getText().isEmpty() ||
-           addEl1NameText.getText().isEmpty() ||
-           addEl1TextText.getText().isEmpty())
+           addElNameText.getText().isEmpty() ||
+           addElTextText.getText().isEmpty())
         {
           JOptionPane.showMessageDialog(frame, "Card cannot be added until all required fields are filled.");
         }
         else
         {
-          librarian.addEntry(new Card(addDrugNameText.getText(), addCatText.getText(), addExtraTextText.getText(), elAddList));
-          //dont forget to clear the fields after, and show a dialog box that the card was added.
-          //may need to restart the program in order for changes to take effect!!!!!!!
+          int parseName = 0;
+          for(JTextField name : elNameList)
+          {
+            parseName++;
+            int parseText = 0;
+            for(JTextField text : elTextList)
+            {
+            parseText++;
+              if(parseName == parseText)
+              {
+                elAddList.add(new Element(name.getText().toString(), text.getText().toString());
+              }
+            }
+          }
+          try
+          {
+            librarian.addEntry(new Card(addDrugNameText.getText(), addCatText.getText(), addExtraTextText.getText(), elAddList));
+            elAddList.clear(); elNameList.clear(); elTextList.clear();
+            addElPanel.removeAll();
+            addElPanel.add(elNameLabel); addElPanel.add(elNameText); addElPanel.add(elTextLabel); addElPanel.add(elTextText);
+            JOptionPane.showMessageDialog(frame, "Card successfully added."); //may need to restart the program in order for changes to take effect!!!!!!!
+          }
+          catch(Exception ex)
+          {
+            ex.printStackTrace();
+          }
         }
       }
     });
+    //for the ComboBox that holds all available Categories, IN DELETEPANEL
+    deleteCatBox.addActionListener(new ActionListener()
+    {
+      public void deleteCatBoxActionPerformed(ActionEvent evt)
+      {
+        setDrugList(deleteCatBox.getSelectedItem());
+        deleteDrugBox.removeAllItems();
+        for(int i = 0; i < drugList.length; i++)
+        {
+          deleteDrugBox.addItem(drugList[i]);
+        }}});
+    //for the button used to preview the card about to be deleted, IN DELETEPANEL
+    deletePreviewButton.addActionListener(new ActionListener()
+    {
+      public void deletePreviewButtonActionPerformed(ActionEvent evt)
+      {
+        if(deleteDrugBox.getSelectedItem() != null)
+        {
+          for(Card card : library)
+          {
+            if(card.getName().equals(deleteDrugBox.getSelectedItem().toString()))
+            {
+              CardGUI cardDisplay = new CardGUI(card);
+              cardDisplay.setVisible(true);
+            }}}}});
+    //for the button used to delete the selected card from the library, IN DELETEPANEL
+    deleteCardButton.addActionListener(new ActionListener()
+    {
+      public void deleteCardButtonActionPerformed(ActionEvent evt)
+      {
+        if(deleteDrugBox.getSelectedItem() != null)
+        {
+          for(Card card : library)
+          {
+            if(card.getName().equals(deleteDrugBox.getSelectedItem().toString()))
+            {
+              int n = JOptionPane.showConfirmDialog(frame, "Sure to delete this card??", JOptionPane.YES_NO_OPTION);
+              if(n ==JOptionPane.YES_OPTION)
+              {
+                initDrugList();
+                try
+                {
+                librarian.deleteEntry(card);
+                JOptionPane.showMessageDialog(frame, "Card successfully deleted.");
+                //there might be a problem with this- this dialog boxes might be overlapping.
+                }
+                catch(Exception ex)
+                {
+                  ex.printStackTrace();
+                }}}}}}});
     //add all to the main pane//////////////////////////////////////////////////////////////////////////////////////////////////////
+    pane.add(deleteCardPanel, BorderLayout.LINE_START);
     pane.add(pickCardPanel, BorderLayout.CENTER);
     pane.add(addCardPanel, BorderLayout.LINE_END);
   }
