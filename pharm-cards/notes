@@ -13,3 +13,6 @@ FORMAT FOR THE MAINFRAME:
 Delete card pane |||  Pick Card pane |||  Add Card pane
 
 VIP: MAY HAVE TO ADD IN SOME JScrollPanes WHILE TESTING
+
+http://stackoverflow.com/questions/5360209/how-to-delete-a-specific-string-in-a-text-file
+http://stackoverflow.com/questions/1377279/find-a-line-in-a-file-and-remove-it
