@@ -12,10 +12,8 @@ public class MainGUI extends JFrame
   
   public MainGUI()
   {
-    librarian = new Librarian(new File(/*file location*/);
+    librarian = new Librarian(new File(/*file location*/));
     library = librarian.getLibrary();
-    catList = new String[];
-    drugList = new String[];
     setCatList();
     initDrugList();
   }
@@ -27,7 +25,7 @@ public class MainGUI extends JFrame
       boolean repeated = false;
       for(int i = 0; i < catList.length; i++)
       {
-        if(catList[i].equals(card.getCategory)))
+        if(catList[i].equals(card.getCategory))
         {
           repeated = true;
         }
@@ -49,11 +47,12 @@ public class MainGUI extends JFrame
   {
     for(Card card : library)
     {
-      if(card.getCategory().equals(cat)))
+      if(card.getCategory().equals(cat))
       {
         drugList[drugList.length] = card.getName();
       }}}
   
+  @SuppressWarnings("unchecked")
   public void addComponentsToPane(final Container pane)
   {
     //create JPanels and set layout manager//////////////////////////////////////////////////////////////////////////////////////
@@ -80,11 +79,11 @@ public class MainGUI extends JFrame
     
     //the panel to delete a card from the library
     JPanel deleteCardPanel = new JPanel();
-    deleteCardPanel.setLayout(new BoxLayout(deleteCardPanel, BoxLayout.Y_AXIS);
-      JPanel deletePanel1 = new JPanel;
-      JPanel deletePanel2 = new JPanel;
-      JPanel deletePanel3 = new JPanel;
-      JPanel deletePanel4 = new JPanel;
+    deleteCardPanel.setLayout(new BoxLayout(deleteCardPanel, BoxLayout.Y_AXIS));
+      JPanel deletePanel1 = new JPanel();
+      JPanel deletePanel2 = new JPanel();
+      JPanel deletePanel3 = new JPanel();
+      JPanel deletePanel4 = new JPanel();
     //create components///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //componenets for the panel to pick a card from the library
     JLabel titleLabel = new JLabel("Pick a card:");
@@ -101,15 +100,15 @@ public class MainGUI extends JFrame
     JLabel addCatLabel = new JLabel("Category: ");
     JTextField addCatText = new JTextField(15);
     JLabel addExtraTextLabel = new JLabel("Main card text(optional): ");
-    JTextField addExtraTextText = new JTextField(15,15);
+    JTextField addExtraTextText = new JTextField(15);
     JLabel elNameLabel = new JLabel("Element Name: ");
     JTextField elNameText = new JTextField(15);
     JLabel elTextLabel = new JLabel("Element Text: ");
-    JTextField elTextText = new JTextField(15,15);
+    JTextField elTextText = new JTextField(15);
     JButton addMoreElsButton = new JButton("Add Another Element");
-      ArrayList<Element> elAddList = new ArrayList<Element>;
-      ArrayList<JTextField> elNameList = new ArrayList<JTextField>;
-      ArrayList<JTextfield> elTextList = new ArrayList<JTextField>;
+      ArrayList<Element> elAddList = new ArrayList<Element>();
+      ArrayList<JTextField> elNameList = new ArrayList<JTextField>();
+      ArrayList<JTextField> elTextList = new ArrayList<JTextField>();
     JButton addCardButton = new JButton("Done: Add Card");
     
     //componenets for the panel to delete a card from the library
@@ -134,7 +133,7 @@ public class MainGUI extends JFrame
     addElPanel.add(elNameLabel); addElPanel.add(elNameText); addElPanel.add(elTextLabel); addElPanel.add(elTextText);
     addPanel5.add(addMoreElsButton);
     addPanel6.add(addCardButton);
-    addCardPanel.add(AddPanel0); addCardPanel.add(addPanel1); addCardPanel.add(addPanel2); addCardPanel.add(addPanel3); addCardPanel.add(addPanel4); addCardPanel.add(addElPanel); addCardPanel.add(addPanel5); addCardPanel.add(addPanel7);
+    addCardPanel.add(addPanel0); addCardPanel.add(addPanel1); addCardPanel.add(addPanel2); addCardPanel.add(addPanel3); addCardPanel.add(addPanel4); addCardPanel.add(addElPanel); addCardPanel.add(addPanel5); addCardPanel.add(addPanel6);
     
     deletePanel1.add(deleteTitleLabel);
     deletePanel2.add(deleteCatLabel); deletePanel2.add(deleteCatBox);
@@ -145,7 +144,7 @@ public class MainGUI extends JFrame
     //for the the ComboBox that holds all available Categories, IN PICKPANEL
     catBox.addActionListener(new ActionListener()
     {
-      public void catBoxActionPerformed(ActionEvent evt)
+      public void actionPerformed(ActionEvent evt)
       {
         setDrugList(catBox.getSelectedItem());
         drugBox.removeAllItems();
@@ -156,7 +155,7 @@ public class MainGUI extends JFrame
     //for the button used to call the selected index card, IN PICKPANEL
     selectDrugButton.addActionListener(new ActionListener()
     {
-      public void selectDrugButtonActionPerformed(ActionEvent evt)
+      public void actionPerformed(ActionEvent evt)
       {
         if(drugBox.getSelectedItem() != null)
         {
@@ -171,29 +170,29 @@ public class MainGUI extends JFrame
     //for the button used to add more textFields and Labels for elements, IN ADDPANEL
     addMoreElsButton.addActionListener(new ActionListener()
     {
-      public void addMoreElsButtonActionPerformed(ActionEvent evt)
+      public void actionPerformed(ActionEvent evt)
       {
         addElPanel.add(new JLabel("Element Name: "));
         elNameList.add(new JTextField(15));
         addElPanel.add(elNameList.get(elNameList.size()-1));
         addElPanel.add(new JLabel("Element Text: "));
-        elTextList.add(new JTextField(15,15));
+        elTextList.add(new JTextField(15));
         addElPanel.add(elTextList.get(elTextList.size()-1));
         addElPanel.validate();
         addElPanel.repaint();
       }
-    }
+    });
     //for the button used to add a card to the library, IN ADDPANEL
     addCardButton.addActionListener(new ActionListener()
     {
-      public void addCardButtonActionPerformed(ActionEvent evt)
+      public void actionPerformed(ActionEvent evt)
       {
         if(addDrugNameText.getText().isEmpty() ||
            addCatText.getText().isEmpty() ||
-           addElNameText.getText().isEmpty() ||
-           addElTextText.getText().isEmpty())
+           elNameText.getText().isEmpty() ||
+           elTextText.getText().isEmpty())
         {
-          JOptionPane.showMessageDialog(frame, "Card cannot be added until all required fields are filled.");
+          JOptionPane.showMessageDialog(pane, "Card cannot be added until all required fields are filled.");
         }
         else
         {
@@ -207,7 +206,7 @@ public class MainGUI extends JFrame
             parseText++;
               if(parseName == parseText)
               {
-                elAddList.add(new Element(name.getText().toString(), text.getText().toString());
+                elAddList.add(new Element(name.getText().toString(), text.getText().toString()));
               }
             }
           }
@@ -217,7 +216,7 @@ public class MainGUI extends JFrame
             elAddList.clear(); elNameList.clear(); elTextList.clear();
             addElPanel.removeAll();
             addElPanel.add(elNameLabel); addElPanel.add(elNameText); addElPanel.add(elTextLabel); addElPanel.add(elTextText);
-            JOptionPane.showMessageDialog(frame, "Card successfully added."); //may need to restart the program in order for changes to take effect!!!!!!!
+            JOptionPane.showMessageDialog(pane, "Card successfully added."); //may need to restart the program in order for changes to take effect!!!!!!!
           }
           catch(Exception ex)
           {
@@ -229,7 +228,7 @@ public class MainGUI extends JFrame
     //for the ComboBox that holds all available Categories, IN DELETEPANEL
     deleteCatBox.addActionListener(new ActionListener()
     {
-      public void deleteCatBoxActionPerformed(ActionEvent evt)
+      public void actionPerformed(ActionEvent evt)
       {
         setDrugList(deleteCatBox.getSelectedItem());
         deleteDrugBox.removeAllItems();
@@ -240,7 +239,7 @@ public class MainGUI extends JFrame
     //for the button used to preview the card about to be deleted, IN DELETEPANEL
     deletePreviewButton.addActionListener(new ActionListener()
     {
-      public void deletePreviewButtonActionPerformed(ActionEvent evt)
+      public void actionPerformed(ActionEvent evt)
       {
         if(deleteDrugBox.getSelectedItem() != null)
         {
@@ -254,7 +253,7 @@ public class MainGUI extends JFrame
     //for the button used to delete the selected card from the library, IN DELETEPANEL
     deleteCardButton.addActionListener(new ActionListener()
     {
-      public void deleteCardButtonActionPerformed(ActionEvent evt)
+      public void actionPerformed(ActionEvent evt)
       {
         if(deleteDrugBox.getSelectedItem() != null)
         {
@@ -262,14 +261,14 @@ public class MainGUI extends JFrame
           {
             if(card.getName().equals(deleteDrugBox.getSelectedItem().toString()))
             {
-              int n = JOptionPane.showConfirmDialog(frame, "Sure to delete this card??", JOptionPane.YES_NO_OPTION);
+              int n = JOptionPane.showConfirmDialog(pane, "Sure to delete this card??");
               if(n ==JOptionPane.YES_OPTION)
               {
                 initDrugList();
                 try
                 {
                 librarian.deleteEntry(card);
-                JOptionPane.showMessageDialog(frame, "Card successfully deleted.");
+                JOptionPane.showMessageDialog(pane, "Card successfully deleted.");
                 //there might be a problem with this- this dialog boxes might be overlapping.
                 }
                 catch(Exception ex)
