@@ -4,6 +4,7 @@ import java.util.ArrayList;
 * @author Jake Arthur
 * @version 2017.3.16
 */
+
 public class Card
 {
   String name;
@@ -74,7 +75,7 @@ public class Card
   */
   public void addMain()
   {
-    els.add(mainCard, 0);
+    els.add(0, mainCard);
   }
   
 }
