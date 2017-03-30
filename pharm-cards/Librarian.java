@@ -86,4 +86,35 @@ public class Librarian()
     }
   }
   
+  public String locateCardName(String line)
+  {
+    Scanner locScan = new Scanner(line);
+    locScan.useDelimiter("|ELEMENT|");
+    locScan.next();
+    return locScan.next(); //testthis, cause I can't tell if its returning the drug name or the category.
+                           //It should return the drug name.
+  }
+  
+  public void deleteEntry(Card card)
+  {
+    File tempFile = File.createTempFile("file", ".txt", file.getParentFile());
+    String charset = "UTF-8";
+    BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file), charset));
+    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(tempFile), charset));
+    
+    String removeThis = card.getName();
+    String currentLine;
+    
+    while((currentLine = reader.readLine()) != null)
+    {
+      String lineLocator = locateCardName(currentLine.trim());
+      if(lineLocator.equals(removeThis)) continue;
+      writer.write(currentLine+System.getProperty("line.separator"));
+    }
+    writer.close();
+    reader.close();
+    file.delete();
+    tempFile.renameTo(file);
+  }
+  
 }
