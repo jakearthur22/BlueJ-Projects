@@ -53,7 +53,7 @@ public class MainGUI extends JFrame
       }}}
   
   @SuppressWarnings("unchecked")
-  public void addComponentsToPane(final Container pane)
+  private void addComponentsToPane(Container pane)
   {
     //create JPanels and set layout manager//////////////////////////////////////////////////////////////////////////////////////
     //the panel to pick a card from the library
@@ -281,7 +281,7 @@ public class MainGUI extends JFrame
     pane.add(addCardPanel, BorderLayout.LINE_END);
   }
   
-  private static void createAndShowGUI()
+  private void createAndShowGUI()
   {
     //create frame
     JFrame frame = new JFrame(card.getName());
