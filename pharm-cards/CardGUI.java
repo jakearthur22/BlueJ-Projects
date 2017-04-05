@@ -25,6 +25,7 @@ public class CardGUI extends JFrame
     setGridCoordinates();
     jbutts = new ArrayList<JButton>();
     outputTxt = new JTextArea(5,10);
+    run();
   }
   
   //any other methods here!
@@ -57,7 +58,8 @@ public class CardGUI extends JFrame
     }
   }
   
-  public void addComponentsToPane(final Container pane)
+  @SuppressWarnings("unchecked")
+  private void addComponentsToPane(Container pane)
   {
     //create JPanels and set layout manager
     JPanel txtPanel = new JPanel();
@@ -101,7 +103,7 @@ public class CardGUI extends JFrame
     pane.add(elPanel, BorderLayout.PAGE_END);
   }
   
-  public static void createAndShowGUI()
+  private void createAndShowGUI()
   {
     //create frame
     JFrame frame = new JFrame(card.getName());
@@ -115,7 +117,7 @@ public class CardGUI extends JFrame
     frame.setVisible(true);
   }
   
-  public static void main(String[] args)
+  public void run()
   {
     //try catch look and feel
     //run createAndShowGUI()
