@@ -16,6 +16,7 @@ public class MainGUI extends JFrame
     library = librarian.getLibrary();
     setCatList();
     initDrugList();
+    run();
   }
   
   private void setCatList()
@@ -230,7 +231,7 @@ public class MainGUI extends JFrame
     {
       public void actionPerformed(ActionEvent evt)
       {
-        setDrugList(deleteCatBox.getSelectedItem());
+        setDrugList(deleteCatBox.getSelectedItem().toString());
         deleteDrugBox.removeAllItems();
         for(int i = 0; i < drugList.length; i++)
         {
@@ -245,7 +246,7 @@ public class MainGUI extends JFrame
         {
           for(Card card : library)
           {
-            if(card.getName().equals(deleteDrugBox.getSelectedItem().toString()))
+            if(card.getName().equals(deleteDrugBox.getSelectedItem()))
             {
               CardGUI cardDisplay = new CardGUI(card);
               cardDisplay.setVisible(true);
@@ -295,7 +296,7 @@ public class MainGUI extends JFrame
     frame.setVisible(true);
   }
   
-  public static void main(String[] args)
+  public void run()
   {
     //try catch look and feel
     //run createAndShowGUI()
