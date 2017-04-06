@@ -1,5 +1,8 @@
+REFERENCES:
 https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
 http://stackoverflow.com/questions/3191837/dynamic-jcomboboxes/3191882#3191882
+http://stackoverflow.com/questions/5360209/how-to-delete-a-specific-string-in-a-text-file
+http://stackoverflow.com/questions/1377279/find-a-line-in-a-file-and-remove-it
 
 FORMAT FOR LIBRARY FILE:
 |NEW CARD||ELEMENT|(drug1 name)|ELEMENT|(drug1 category)|ELEMENT|(optional card1 text)
@@ -12,7 +15,9 @@ FORMAT FOR LIBRARY FILE:
 FORMAT FOR THE MAINFRAME:
 Delete card pane |||  Pick Card pane |||  Add Card pane
 
-VIP: MAY HAVE TO ADD IN SOME JScrollPanes WHILE TESTING
 
-http://stackoverflow.com/questions/5360209/how-to-delete-a-specific-string-in-a-text-file
-http://stackoverflow.com/questions/1377279/find-a-line-in-a-file-and-remove-it
+Next on the agenda:
+1.) MAY HAVE TO ADD IN SOME JScrollPanes WHILE TESTING
+2.) Brush up on how to call text .txt files
+3.) Research the public static void main(String[] args) thing
+4.) Get BlueJ on home pc and test!
